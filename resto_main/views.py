@@ -3,5 +3,4 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse('Hello, World!, testing signed key, testing github irc bot')
-
+    return render(request, 'home.html')
