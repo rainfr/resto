@@ -46,23 +46,23 @@ class User(AbstractBaseUser):
         (CUSTOMER, 'Client')
     )
     
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    username = models.CharField(max_length=30, unique=True)
-    email = models.EmailField(max_length=100, unique=True)
+    first_name = models.CharField(max_length=30, default='first_name')
+    last_name = models.CharField(max_length=30, default='last_name')
+    username = models.CharField(max_length=30, unique=True, null=False, blank=False, default='username')
+    email = models.EmailField(max_length=100, unique=True, null=False, blank=False, default='email')
     phone_number = models.CharField(max_length=30, unique=True, blank=True)
     role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, null=True, blank=False)
     
     
     #required fields
-    date_joined = models.DateTimeField(auto_now_add=True)
-    last_login = models.DateTimeField(auto_now_add=True)
-    created_date = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
-    is_admin = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
-    is_superadmin = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(auto_now=True, null=False, blank=False)
+    last_login = models.DateTimeField(auto_now_add=True, null=False, blank=False)
+    created_date = models.DateTimeField(auto_now=True, null=False, blank=False)
+    modified_date = models.DateTimeField(auto_now=True, null=False, blank=False)
+    is_admin = models.BooleanField(default=False, null=False, blank=False)
+    is_staff = models.BooleanField(default=False, null=False, blank=False)
+    is_active = models.BooleanField(default=False, null=False, blank=False)
+    is_superadmin = models.BooleanField(default=False, null=False, blank=False)
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
