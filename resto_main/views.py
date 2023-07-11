@@ -3,5 +3,5 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse('Hello, World!, testing signed key')
+    return HttpResponse('Hello, World!, testing signed key, testing github irc bot')
 
