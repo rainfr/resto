@@ -46,10 +46,10 @@ class User(AbstractBaseUser):
         (CUSTOMER, 'Client')
     )
     
-    first_name = models.CharField(max_length=30, default='first_name')
-    last_name = models.CharField(max_length=30, default='last_name')
-    username = models.CharField(max_length=30, unique=True, null=False, blank=False, default='username')
-    email = models.EmailField(max_length=100, unique=True, null=False, blank=False, default='email')
+    first_name = models.CharField(max_length=30, default='give a first_name')
+    last_name = models.CharField(max_length=30, default='give a last_name')
+    username = models.CharField(max_length=30, unique=True, null=False, blank=False, default='give a username')
+    email = models.EmailField(max_length=100, unique=True, null=False, blank=False, default='give a email')
     phone_number = models.CharField(max_length=30, unique=True, blank=True)
     role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, null=True, blank=False)
     
