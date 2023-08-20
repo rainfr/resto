@@ -86,13 +86,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            {% if messages %}
-                                                {% for messages in messages %}
-                                                    <div class="alert alert-success" role="alert">
-                                                    {{messages}}
-                                                    </div>
-                                                {% endfor %}
-                                            {% endif %}
+                                            {% include 'includes/alerts.html' %}
                                         </div>
                                     </div>
                                 </li>
