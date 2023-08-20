@@ -42,7 +42,7 @@ class User(AbstractBaseUser):
     CUSTOMER = 2
     
     ROLE_CHOICES = (
-        (VENDOR, 'Restaurant'),
+        (VENDOR, 'Vendor'),
         (CUSTOMER, 'Client')
     )
     
