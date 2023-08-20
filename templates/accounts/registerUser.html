@@ -73,6 +73,7 @@
                                                 {% endfor %}
                                            {% endif %}
                                         {% endfor %}
+                                        <li style="color: red;">{{form.non_field_errors}}</li>
                                     </ul>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -81,6 +82,17 @@
                                                     <input type="submit" value="Submit" id="btn-next-restaurant-information" class="bgcolor">
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            {% if messages %}
+                                                {% for messages in messages %}
+                                                    <div class="alert alert-success" role="alert">
+                                                    {{messages}}
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </li>
