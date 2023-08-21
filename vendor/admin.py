@@ -8,6 +8,3 @@ class VendorAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Vendor, VendorAdmin)
-    
-    
-    
