@@ -7,7 +7,10 @@ from .models import User, UserProfile
 from django.contrib import messages, auth
 
 def registerUser(request):
-    if request.method == 'POST':
+    if request.user.is_authenticated:
+        messages.warning(request,'Ups!, you are already logged in.')
+        return redirect('dashboard')
+    elif request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
             #Create the user using form
@@ -40,7 +43,10 @@ def registerUser(request):
 
 
 def registerVendor(request):
-    if request.method == 'POST':
+    if request.user.is_authenticated:
+        messages.warning(request,'Ups!, you are already logged in.')
+        return redirect('dashboard')
+    elif request.method == 'POST':
         #Store data and create the user
         form = UserForm(request.POST)
         v_form = VendorForm(request.POST, request.FILES)
@@ -75,7 +81,10 @@ def registerVendor(request):
 
 
 def login(request):
-    if request.method == 'POST':
+    if request.user.is_authenticated:
+        messages.warning(request,'Ups!, you are already logged in.')
+        return redirect('dashboard')
+    elif request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
         
@@ -93,7 +102,9 @@ def login(request):
 
 
 def logout(request):
-    return render(request, 'accounts/logout.html')
+    auth.logout(request)
+    messages.info(request, 'You are logged out.')
+    return redirect('login')
 
 
 def dashboard(request):

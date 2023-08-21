@@ -1,4 +1,3 @@
-# Project to learn django
-Django restaurant project, work in progress!
+# django project
 
 DO NOT USE THIS YET.
