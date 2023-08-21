@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from vendor.forms import VendorForm
 from .forms import UserForm
 from .models import User, UserProfile
-from django.contrib import messages
+from django.contrib import messages, auth
 
 def registerUser(request):
     if request.method == 'POST':
@@ -75,6 +75,20 @@ def registerVendor(request):
 
 
 def login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        
+        user = auth.authenticate(email=email, password=password)
+        
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, 'Youre now logged in.')
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'Invalid login credentials')
+            return redirect('login')
+        
     return render(request, 'accounts/login.html')
 
 
