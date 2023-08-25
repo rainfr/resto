@@ -146,3 +146,15 @@ def custDashboard(request):
 @login_required(login_url='login')
 def vendorDashboard(request):
     return render(request, 'accounts/vendorDashboard.html')
+
+
+def forgot_password(request):
+    return render(request, 'accounts/forgot_password.html')
+
+
+def reset_password_validate(request, uidb64, token):
+    return render(request, 'accounts/reset_password_validate.html')
+
+
+def reset_password(request):
+    return render(request, 'accounts/reset_password.html')
