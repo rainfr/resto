@@ -8,6 +8,14 @@ from vendor.forms import VendorForm
 from .forms import UserForm
 from .models import User, UserProfile
 from .utils import detectUser, send_verification_email
+from django.core.exceptions import PermissionDenied 
+
+
+def check_role_vendor(user):
+    if user.role == 1:
+        return True
+    else:
+        raise PermissionError
 
 
 def registerUser(request):
@@ -145,12 +153,14 @@ def myAccount(request):
 
 
 @login_required(login_url='login')
+#@user_passes_test(check_role_vendor)
 def custDashboard(request):
     return render(request, 'accounts/custDashboard.html')
 
 
 @login_required(login_url='login')
 def vendorDashboard(request):
+    
     return render(request, 'accounts/vendorDashboard.html')
 
 

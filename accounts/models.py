@@ -42,7 +42,7 @@ class User(AbstractBaseUser):
 
     ROLE_CHOICES = (
         (VENDOR, 'Vendor'),
-        (CUSTOMER, 'Client')
+        (CUSTOMER, 'Customer')
     )
 
     first_name = models.CharField(max_length=30, default='give a first_name')
